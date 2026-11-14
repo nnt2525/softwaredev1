@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f4ee" />
+    <meta
+      name="description"
+      content="Mali ผู้ช่วย AI ที่ช่วยคุณคิด เขียน และจัดการเรื่องยุ่ง ๆ ให้ชัดขึ้น"
+    />
+    <title>Mali — ผู้ช่วย AI ของคุณ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <aside class="chat-sidebar" id="chat-sidebar" aria-label="แถบด้านข้าง">
+        <div class="sidebar-top">
+          <a class="mali-brand" href="#" aria-label="Mali หน้าหลัก">
+            <span class="mali-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span>mali</span>
+          </a>
+          <button class="icon-button sidebar-close" type="button" aria-label="ปิดแถบด้านข้าง" title="ปิดแถบด้านข้าง">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M19 5v14M4 5h16M4 19h16" /></svg>
+          </button>
+        </div>
+
+        <button class="new-chat-button" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+          <span>เริ่มแชตใหม่</span>
+          <kbd>⌘ K</kbd>
+        </button>
+
+        <div class="sidebar-section">
+          <p class="sidebar-label">พื้นที่ทำงาน</p>
+          <button class="workspace-button" type="button">
+            <span class="workspace-icon">P</span>
+            <span>พื้นที่ส่วนตัว</span>
+            <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </button>
+        </div>
+
+        <div class="sidebar-section recent-section">
+          <p class="sidebar-label">ประวัติแชต</p>
+          <div class="history-list" id="chat-history-list" aria-label="ประวัติการสนทนา">
+            <p class="history-empty">ยังไม่มีประวัติ</p>
+          </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="upgrade-note">
+            <span class="upgrade-spark" aria-hidden="true">✳</span>
+            <div><strong>พื้นที่สำหรับไอเดียของคุณ</strong><span>เรียบง่าย เป็นส่วนตัว</span></div>
+          </div>
+          <button class="profile-button" type="button">
+            <span class="avatar">N</span>
+            <span class="profile-name"><strong>คุณนรินทร์</strong><small>บัญชีส่วนตัว</small></span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <main class="chat-main">
+        <header class="chat-topbar">
+          <button class="icon-button sidebar-open" type="button" aria-label="เปิดแถบด้านข้าง" title="เปิดแถบด้านข้าง">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M19 5v14M4 5h16M4 19h16" /></svg>
+          </button>
+          <button class="model-picker" type="button" aria-label="TinyFish Deep Research">
+            <span>Mali</span><span class="model-version">Deep Research</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+          </button>
+          <div class="topbar-actions">
+            <span class="demo-status"><span></span> TinyFish Research</span>
+            <button class="icon-button" type="button" aria-label="ตัวเลือกเพิ่มเติม" title="ตัวเลือกเพิ่มเติม">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="chat-scroll" id="chat-scroll">
+          <section class="welcome-view" id="welcome-view" aria-labelledby="welcome-title">
+            <div class="welcome-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+            <p class="welcome-eyebrow">ค้นคว้าจากเว็บ พร้อมแหล่งอ้างอิง</p>
+            <h1 id="welcome-title">สวัสดีครับ<br /><em>วันนี้มีอะไรให้ช่วยไหม</em></h1>
+            <div class="suggestion-grid" aria-label="ตัวอย่างคำถาม">
+              <button class="suggestion-card" type="button" data-prompt="ช่วยคิดไอเดียเริ่มต้นสำหรับโปรเจกต์ใหม่ให้หน่อย">
+                <span class="suggestion-icon idea-icon" aria-hidden="true">✳</span>
+                <span><strong>ช่วยต่อยอดไอเดีย</strong><small>เริ่มจากความคิดเล็ก ๆ</small></span>
+                <span class="suggestion-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="suggestion-card" type="button" data-prompt="ช่วยวางแผนงานที่ต้องทำในสัปดาห์นี้ให้เป็นขั้นตอน">
+                <span class="suggestion-icon plan-icon" aria-hidden="true">▤</span>
+                <span><strong>จัดระเบียบสิ่งที่ต้องทำ</strong><small>ทำเรื่องยุ่งให้ชัดขึ้น</small></span>
+                <span class="suggestion-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="suggestion-card" type="button" data-prompt="ช่วยเขียนข้อความให้สุภาพและเป็นกันเอง สำหรับเลื่อนนัดประชุม">
+                <span class="suggestion-icon write-icon" aria-hidden="true">↗</span>
+                <span><strong>ช่วยร่างข้อความ</strong><small>หาคำที่ใช่ในแบบของคุณ</small></span>
+                <span class="suggestion-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="suggestion-card" type="button" data-prompt="ช่วยอธิบายเรื่องยาก ๆ ให้เข้าใจง่าย พร้อมยกตัวอย่าง">
+                <span class="suggestion-icon learn-icon" aria-hidden="true">◌</span>
+                <span><strong>เรียนรู้เรื่องใหม่</strong><small>ถามได้ทุกเรื่องที่สงสัย</small></span>
+                <span class="suggestion-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="conversation" id="conversation" aria-live="polite" aria-label="บทสนทนา"></section>
+        </div>
+
+        <div class="composer-area">
+          <form class="composer" id="chat-form">
+            <label class="visually-hidden" for="prompt-input">พิมพ์ข้อความถึง Mali</label>
+            <textarea id="prompt-input" rows="1" placeholder="คุยกับ Mali ได้เลย..." maxlength="2000"></textarea>
+            <div class="composer-toolbar">
+              <div class="composer-tools">
+                <button class="tool-button" type="button" aria-label="แนบไฟล์" title="แนบไฟล์">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 5-6.5 6.5a4 4 0 0 0 5.7 5.7l7-7a2.8 2.8 0 0 0-4-4l-7 7a1.5 1.5 0 0 0 2.1 2.1l6.3-6.3" /></svg>
+                </button>
+                <button class="tool-button search-tool" type="button" aria-label="ค้นหาเว็บ" title="ค้นหาเว็บ">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4 4" /></svg>
+                  <span>ค้นหา</span>
+                </button>
+              </div>
+              <div class="composer-right">
+                <span class="model-hint">Mali อาจตอบผิดพลาดได้</span>
+                <button class="send-button" type="submit" aria-label="ส่งข้อความ" disabled>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" /></svg>
+                </button>
+              </div>
+            </div>
+          </form>
+          <p class="demo-disclaimer">ทักทายตอบทันที · คำถามทั่วไปใช้ Search (ฟรีสูงสุด 12,000 ครั้ง/วัน) · งานวิจัย $2/run, 5-20 นาที</p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
